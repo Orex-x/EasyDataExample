@@ -5,7 +5,6 @@ C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\Eas
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\EasyDataExample.deps.json
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\EasyDataExample.runtimeconfig.json
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\EasyDataExample.dll
-C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\ref\EasyDataExample.dll
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\EasyDataExample.pdb
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\EasyData.AspNetCore.dll
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\bin\Debug\net6.0\EasyData.Core.dll
@@ -43,3 +42,4 @@ C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\obj\Debug\net6.0\Eas
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\obj\Debug\net6.0\ref\EasyDataExample.dll
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\obj\Debug\net6.0\EasyDataExample.pdb
 C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\obj\Debug\net6.0\EasyDataExample.genruntimeconfig.cache
+C:\Users\dana\RiderProjects\EasyDataExample\EasyDataExample\obj\Debug\net6.0\refint\EasyDataExample.dll

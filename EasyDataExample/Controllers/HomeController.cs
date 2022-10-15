@@ -7,6 +7,7 @@ namespace EasyDataExample.Controllers;
 public class HomeController : Controller
 {
     private readonly AppDbContext _db;
+    
     public HomeController(AppDbContext context)
     {
         _db = context;
