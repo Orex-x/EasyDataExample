@@ -1,6 +1,11 @@
 using EasyData.Services;
 using EasyDataExample;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +19,16 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connect
     builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
 }), ServiceLifetime.Transient);
 
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options => {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
+    });
+
+
+
 var app = builder.Build();
+
 
 app.MapEasyData(options => {
     options.UseDbContext<AppDbContext>();
@@ -38,3 +52,19 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+
+
+public class DateTimeConverter : JsonConverter<DateTime>
+{
+    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        return DateTime.Parse(reader.GetString());
+    }
+
+    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:ss"));
+    }
+}

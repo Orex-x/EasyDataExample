@@ -13,12 +13,45 @@ public class ApiController : Controller
     {
         _db = db;
     }
-    
 
+    #region CREATE
+
+   /* [Route("Contract/create")]
+    public async Task<int> CreateContract([FromBody]Contract contract)
+    {
+        var client = _db.Clients.FirstOrDefault(x => x.Id == contract.Client.Id);
+        contract.Client = client;
+
+        List<BuildingServiceContract> listOld = new (contract.BuildingServices.ToList());
+        List<BuildingServiceContract> listNew = new (contract.BuildingServices.ToList());
+       
+        for(int i = 0; i < contract.BuildingServices.Count; i++)
+        {
+            var buildingService = _db.BuildingServices
+               .Include(x => x.BuildPhases)
+               .FirstOrDefault(x => x.Id == listOld[i].BuildingService!.Id);
+            listNew[i].BuildingService = buildingService;
+            if (listNew[i].Estimate == null) listNew[i].EstimateId = null;
+        }
+
+        if(contract.Client == null) contract.ClientId = null;
+        if(contract.Receipt == null) contract.ReceiptId = null;
+        if(contract.Receipt == null) contract.ReceiptId = null;
+
+        contract.BuildingServices = listNew;
+
+        _db.Contracts.Add(contract);
+        return await _db.SaveChangesAsync();
+    }
+*/
+
+    #endregion
+    
+    #region GET
     [Route("BuildingService/get")]
     public async Task<IEnumerable<BuildingService>> GetBuildingServices()
         => await _db.BuildingServices
-            .Include(x => x.BuildPhases)
+          //  .Include(x => x.BuildPhases)
             .ToArrayAsync();  
     
     [Route("BuildingServiceContract/get")]
@@ -26,11 +59,11 @@ public class ApiController : Controller
         => await _db.BuildingServiceContracts
             .Include(x => x.Contract)
             .Include(x => x.Estimate)
-            .Include(x => x.Order)
-            .Include(x => x.BuildPhaseContracts)
+        //    .Include(x => x.Order)
+           // .Include(x => x.BuildPhaseContracts)
             .ToArrayAsync(); 
     
-    [Route("BuildPhase/get")]
+   /* [Route("BuildPhase/get")]
     public async Task<IEnumerable<BuildPhase>> GetBuildPhases()
         => await _db.BuildPhases
             .Include(x => x.BuildingService)
@@ -42,7 +75,7 @@ public class ApiController : Controller
             .Include(x => x.BuildPhase)
             .Include(x => x.BuildingServiceContract)
             .ToArrayAsync();
-    
+    */
     [Route("Client/get")]
     public async Task<IEnumerable<Client>> GetClients()
         => await _db.Clients
@@ -77,12 +110,12 @@ public class ApiController : Controller
             .Include(x => x.Estimate)
             .ToArrayAsync();
     
-    [Route("Order/get")]
+/*    [Route("Order/get")]
     public async Task<IEnumerable<Order>> GetOrders()
         => await _db.Orders
             .Include(x => x.Client)
             .Include(x => x.BuildingServices)
-            .ToArrayAsync(); 
+            .ToArrayAsync(); */
     
     [Route("Receipt/get")]
     public async Task<IEnumerable<Receipt>> GetReceipts()
@@ -93,4 +126,5 @@ public class ApiController : Controller
     [Route("User/get")]
     public async Task<IEnumerable<User>> GetUsers()
         => await _db.Users.ToArrayAsync();
+    #endregion
 }
