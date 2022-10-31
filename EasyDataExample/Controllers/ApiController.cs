@@ -27,7 +27,15 @@ public class ApiController : Controller
             .Include(x => x.Materials)
             .ToArrayAsync(); 
     
+    
+    [Route("BuildingServiceMaterial/get")]
+    public async Task<IEnumerable<BuildingServiceMaterial>> GetBuildingServiceMaterials()
+        => await _db.BuildingServiceMaterials
+            .Include(x => x.Material)
+            .Include(x => x.BuildingServiceContract)
+            .ToArrayAsync();
    
+    
     [Route("Client/get")]
     public async Task<IEnumerable<Client>> GetClients()
         => await _db.Clients
@@ -53,7 +61,6 @@ public class ApiController : Controller
     [Route("Material/get")]
     public async Task<IEnumerable<Material>> GetMaterials()
         => await _db.Materials
-            .Include(x => x.BuildingServiceContract)
             .ToArrayAsync();
     
     

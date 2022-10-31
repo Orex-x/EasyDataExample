@@ -7,6 +7,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<BuildingService> BuildingServices { get; set; }
     public DbSet<BuildingServiceContract> BuildingServiceContracts { get; set; }
+    public DbSet<BuildingServiceMaterial> BuildingServiceMaterials { get; set; }
     public DbSet<Client> Clients { get; set; }
     public DbSet<Contract> Contracts { get; set; }
     public DbSet<Employee> Employees { get; set; }
