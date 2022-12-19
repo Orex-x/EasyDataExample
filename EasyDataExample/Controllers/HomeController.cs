@@ -13,14 +13,16 @@ public class HomeController : Controller
         _db = context;
     }
 
-    public async Task<IEnumerable<User>> Index()
-        => await _db.Users.ToArrayAsync();
-
+    public IActionResult Index()
+    {
+        return EasyData();
+    }
+    
     public IActionResult Privacy()
     {
         return View();
     }
-
+    
     public IActionResult EasyData()
     {
         return View();

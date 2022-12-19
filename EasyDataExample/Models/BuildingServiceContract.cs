@@ -27,4 +27,6 @@ public class BuildingServiceContract
     public int? PriceEstimate { get; set; }
     
     public virtual ICollection<BuildingServiceMaterial> Materials { get; set; }
+    
+    public virtual ICollection<Stage> Stages { get; set; }
 }

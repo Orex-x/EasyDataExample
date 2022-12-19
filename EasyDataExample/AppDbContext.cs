@@ -13,6 +13,7 @@ public class AppDbContext : DbContext
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Material> Materials { get; set; }
     public DbSet<Receipt> Receipts { get; set; }
+    public DbSet<Stage> Stages { get; set; }
     public DbSet<TypeClimaticCondition> TypeClimaticConditions { get; set; }
     public DbSet<TypeGround> TypeGrounds { get; set; }
     public DbSet<TypeRelief> TypeReliefs { get; set; }

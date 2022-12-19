@@ -7,7 +7,7 @@ public enum Role
 {
     Technical,
     Production,
-    Supply,
+    Engineer,
     Contractual
 }
 

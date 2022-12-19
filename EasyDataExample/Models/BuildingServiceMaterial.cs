@@ -1,5 +1,8 @@
-﻿namespace EasyDataExample.Models;
+﻿using EasyData.EntityFrameworkCore;
 
+namespace EasyDataExample.Models;
+
+[MetaEntity(DisplayName = "Материалы в договоре", DisplayNamePlural = "Материалы в договоре", Description = "Выборка материалов в договоре")]
 public class BuildingServiceMaterial
 {
     public int Id { get; set; }

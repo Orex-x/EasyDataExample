@@ -49,6 +49,16 @@ public class ApiController : Controller
             .Include(x => x.Employee)
             .Include(x => x.Receipt)
             .Include(x => x.BuildingServiceContract)
+            .ThenInclude(x => x.TypeGround)
+            .Include(x => x.BuildingServiceContract)
+            .ThenInclude(x => x.TypeRelief)
+            .Include(x => x.BuildingServiceContract)
+            .ThenInclude(x => x.TypeClimaticCondition)
+            .Include(x => x.BuildingServiceContract)
+            .ThenInclude(x => x.Materials)
+            .ThenInclude(x => x.Material)
+            .Include(x => x.BuildingServiceContract)
+            .ThenInclude(x => x.Stages)
             .ToArrayAsync(); 
     
     [Route("Employee/get")]
@@ -68,7 +78,12 @@ public class ApiController : Controller
     public async Task<IEnumerable<Receipt>> GetReceipts()
         => await _db.Receipts
             .Include(x => x.Client)
-            .ToArrayAsync();  
+            .ToArrayAsync();   
+    
+    
+    [Route("Stage/get")]
+    public async Task<IEnumerable<Stage>> GetStages()
+        => await _db.Stages.ToArrayAsync();  
             
     [Route("TypeClimaticCondition/get")]
     public async Task<IEnumerable<TypeClimaticCondition>> GetTypeClimaticConditions()

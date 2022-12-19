@@ -6,7 +6,9 @@ namespace EasyDataExample.Models;
 public enum ContractStatus
 {
     NEW,
+    NOT_ACCEPT,
     ACCEPT,
+    PENDING,
     COMPLETED
 }
 
